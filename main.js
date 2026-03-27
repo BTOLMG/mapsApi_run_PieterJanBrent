@@ -32,22 +32,24 @@ if (navigator.geolocation) {
     alert('Geolocatie wordt niet ondersteund door deze browser.');
 }
 
-function createPoint()
-{
-    lon = Math.floor(Math.random() * (50.92687 - 50.92825 + 1)) + 50.92825
-    lat = Math.floor(Math.random() * (5.38591 - 5.38400 + 1)) + 5.38400
-    const cirkel = L.circle([lon, lat], {
-    color: 'yellow',      // randkleur
-    fillColor: 'rgb(217, 255, 0)',  // vulkleur
-    fillOpacity: 0.,
-    radius: 500         // straal in meters
-}).addTo(kaart);
-}
+function getLocation(){
+    console.log("HI")
+    // navigator.geolocation is ingebouwd in de browser, geen extra library nodig
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+            function (positie) {
+                const lat = positie.coords.latitude;
+                const lng = positie.coords.longitude;
 
-function addPoint(){
-    if (localStorage.points) {
-        localStorage.points = Number(localStorage.points) + 1;
+                L.marker([lat, lng])
+                    .addTo(kaart);
+            },
+            function (fout) {
+                // Wordt opgeroepen als de gebruiker toestemming weigert of er een fout optreedt
+                alert('Locatie kon niet worden bepaald: ' + fout.message);
+            }
+        );
     } else {
-        localStorage.points = 1;
-    } 
+        alert('Geolocatie wordt niet ondersteund door deze browser.');
+    }
 }
