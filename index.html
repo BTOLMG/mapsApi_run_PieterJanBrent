@@ -14,10 +14,10 @@
 <body>
     <h1>Mijn Leaflet kaart</h1>
     <div id="kaart"></div>
+    <button onclick="getLocation()" id="refreshLocation">GET CURRENT POSITION</button>
 
     <script>
-        const kaart = L.map('kaart').setView([50.8503, 4.3517], 13);
-
+        const kaart = L.map('kaart').setView([50.92825, 5.38570], 17);
         L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(kaart);
