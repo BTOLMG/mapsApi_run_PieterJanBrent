@@ -14,8 +14,8 @@
 <body>
     <h1>Mijn Leaflet kaart</h1>
     <div id="kaart"></div>
-    <button onclick="getLocation()" id="refreshLocation"></button>
-    <button onclick="checkLocation()" id="refreshLocation"></button>
+    <button onclick="getLocation()" id="refreshLocation">get</button>
+    <button onclick="checkLocation()" id="refreshLocation">check</button>
 
     <script>
         const kaart = L.map('kaart').setView([50.92825, 5.38570], 17);
@@ -34,12 +34,18 @@
 
             lon = Math.floor(Math.random() * (50.92687 - 50.92825 + 1)) + 50.92825
             lat = Math.floor(Math.random() * (5.38591 - 5.38400 + 1)) + 5.38400
+
+            localStorage.lng = Number(lon);
+            localStorage.lat = Number(lat);
+
             const cirkel = L.circle([lon, lat], {
                 color: 'yellow',      // randkleur
                 fillColor: 'rgb(217, 255, 0)',  // vulkleur
                 fillOpacity: 0.3,
                 radius: 25         // straal in meters
             }).addTo(kaart);
+            
+
 
         // Klik-event
         kaart.on('click', function (e) {
