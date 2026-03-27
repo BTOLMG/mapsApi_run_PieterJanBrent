@@ -16,3 +16,11 @@ if (navigator.geolocation) {
 } else {
     alert('Geolocatie wordt niet ondersteund door deze browser.');
 }
+
+function addPoint(){
+    if (localStorage.points) {
+        localStorage.points = Number(localStorage.points) + 1;
+    } else {
+        localStorage.points = 1;
+    } 
+}
