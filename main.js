@@ -16,7 +16,6 @@ function getLocation(){
                 const lng = positie.coords.longitude;
 
                 L.marker([lat, lng])
-                    
                     .addTo(kaart);
             },
             function (fout) {
