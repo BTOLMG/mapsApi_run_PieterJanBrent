@@ -21,12 +21,7 @@ if (navigator.geolocation) {
                 fillColor: '#3388ff',
                 fillOpacity: 0.1
             }).addTo(kaart);
-            const cirkel = L.circle([50.925385347781784, 5.392290118354094], {
-            color: 'red',      // randkleur
-            fillColor: '#f03',  // vulkleur
-            fillOpacity: 0.3,
-            radius: 500         // straal in meters
-            }).addTo(kaart);
+            createPoint();
         },
         function (fout) {
             // Wordt opgeroepen als de gebruiker toestemming weigert of er een fout optreedt
@@ -39,10 +34,12 @@ if (navigator.geolocation) {
 
 function createPoint()
 {
-    const cirkel = L.circle([rand(), rand()], {
-    color: 'red',      // randkleur
-    fillColor: '#f03',  // vulkleur
-    fillOpacity: 0.3,
+    lon = Math.floor(Math.random() * (50.92687 - 50.92825 + 1)) + 50.92825
+    lat = Math.floor(Math.random() * (5.38591 - 5.38400 + 1)) + 5.38400
+    const cirkel = L.circle([lon, lat], {
+    color: 'yellow',      // randkleur
+    fillColor: 'rgb(217, 255, 0)',  // vulkleur
+    fillOpacity: 0.,
     radius: 500         // straal in meters
 }).addTo(kaart);
 }
