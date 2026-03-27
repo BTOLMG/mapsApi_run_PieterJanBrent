@@ -27,3 +27,7 @@ function getLocation(){
         alert('Geolocatie wordt niet ondersteund door deze browser.');
     }
 }
+
+function checkLocation(){
+    
+}
