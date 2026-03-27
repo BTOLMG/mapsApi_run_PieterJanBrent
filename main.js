@@ -22,6 +22,12 @@ if (navigator.geolocation) {
                 fillColor: '#3388ff',
                 fillOpacity: 0.1
             }).addTo(kaart);
+            const cirkel = L.circle([50.925385347781784, 5.392290118354094], {
+            color: 'red',      // randkleur
+            fillColor: '#f03',  // vulkleur
+            fillOpacity: 0.3,
+            radius: 500         // straal in meters
+}).addTo(kaart);
         },
         function (fout) {
             // Wordt opgeroepen als de gebruiker toestemming weigert of er een fout optreedt
@@ -30,4 +36,15 @@ if (navigator.geolocation) {
     );
 } else {
     alert('Geolocatie wordt niet ondersteund door deze browser.');
+}
+
+createPoint()
+{
+    const cirkel = L.circle([50.925385347781784, 5.392290118354094], {
+    color: 'red',      // randkleur
+    fillColor: '#f03',  // vulkleur
+    fillOpacity: 0.3,
+    radius: 500         // straal in meters
+}).addTo(kaart);
+
 }
