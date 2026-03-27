@@ -4,7 +4,6 @@ if (navigator.geolocation) {
         function (positie) {
             const lat = positie.coords.latitude;
             const lng = positie.coords.longitude;
-            const nauwkeurigheid = positie.coords.accuracy; // in meters
 
             // Centreer de kaart op de gebruiker
             kaart.setView([lat, lng], 16);

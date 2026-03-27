@@ -22,19 +22,14 @@
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(kaart);
 
-        // Marker met popup
-        L.marker([50.8503, 4.3517])
-            .addTo(kaart)
-            .bindPopup('<b>Brussel</b><br>Hoofdstad van België.')
-            .openPopup();
-
-        // Cirkel
-        L.circle([50.925385347781784, 5.392290118354094], {
-            color: 'red',
-            fillColor: '#f03',
-            fillOpacity: 0.3,
-            radius: 300
-        }).addTo(kaart).bindPopup('Een rode cirkel.');
+        // BORDER
+        var bounds = [[50.92825, 5.38400], [50.92687, 5.38591]];
+        L.rectangle(bounds, {
+            color: "#ff7800", // Randkleur
+            weight: 2,        // Randdikte
+            fillColor: "#ff7800", // Vulkleur
+            fillOpacity: 0.5  // Transparantie
+        }).addTo(kaart).bindPopup('BORDER');
 
         // Klik-event
         kaart.on('click', function (e) {
