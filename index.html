@@ -32,6 +32,15 @@
             fillOpacity: 0.5  // Transparantie
         }).addTo(kaart).bindPopup('BORDER');
 
+            lon = Math.floor(Math.random() * (50.92687 - 50.92825 + 1)) + 50.92825
+            lat = Math.floor(Math.random() * (5.38591 - 5.38400 + 1)) + 5.38400
+            const cirkel = L.circle([lon, lat], {
+                color: 'yellow',      // randkleur
+                fillColor: 'rgb(217, 255, 0)',  // vulkleur
+                fillOpacity: 0.3,
+                radius: 25         // straal in meters
+            }).addTo(kaart);
+
         // Klik-event
         kaart.on('click', function (e) {
             L.popup()
