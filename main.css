@@ -1,11 +1,14 @@
+:root{
+    --location: 20;
+}
+
 #refreshLocation{
-    background-color: red;
-    border: 0;
+    background-color: transparent;
+    border:1px dotted #eeeeee;
     color: transparent;
     width: 500px;
     height: 500px;
     border-radius: 50%;
-    margin-left: 50%;
-    margin-top: calc(100vh*20);
-    
+    margin-left: calc(100vw * var(--location));
+    margin-top: calc(100vh * var(--location));
 }
