@@ -51,6 +51,10 @@ function newLocation()
     localStorage.lat = Math.random() * (5.38591 - 5.38400) + 5.38400
     localStorage.lng = Math.random() * (50.92825 - 50.92687) + 50.92687
 
+    const root = document.documentElement;
+    root.style.setProperty('--location', '' + Math.random() * (100 - 10) + 10);
+
+
     while (kaart.distance([lngPrevious, latPrevious], [localStorage.lng, localStorage.lat]) < 80) {
         console.log(kaart.distance([lngPrevious, latPrevious], [localStorage.lng, localStorage.lat]));
         localStorage.lat = Math.random() * (5.38591 - 5.38400) + 5.38400
