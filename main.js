@@ -1,14 +1,13 @@
 function getLocation(){
-    console.log("HI")
+    console.log("location refreshed")
     // navigator.geolocation is ingebouwd in de browser, geen extra library nodig
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(
             function (positie) {
                 const lat = positie.coords.latitude;
                 const lng = positie.coords.longitude;
-
  
-                localStorage.lonUser = Number(lng);
+                localStorage.lngUser = Number(lng);
                 localStorage.latUser = Number(lat);
 
                 L.marker([lat, lng])
@@ -27,16 +26,35 @@ function getLocation(){
 }
 
 function checkLocation(){
-    console.log("HII")
-    if(Math.sqrt(Math.pow(localStorage.latUser - localStorage.lat,2) + Math.pow(localStorage.lngUser - localStorage.lng,2)) >= 25){
+    console.log("location checked");
+    console.log(kaart.distance([localStorage.latUser, localStorage.lngUser], [localStorage.lat, localStorage.lng]));
+    if(kaart.distance([localStorage.latUser, localStorage.lngUser], [localStorage.lng, localStorage.lat]) <= 25){
         addPoint();
+        newLocation();
     }
 }
 
 function addPoint(){
+    console.log("point added");
     if (localStorage.points) {
         localStorage.points = Number(localStorage.points) + 1;
     } else {
         localStorage.points = 1;
     } 
+}
+
+function newLocation()
+{
+    console.log("location changed");
+    var latPrevious = localStorage.latUser;
+    var lngPrevious = localStorage.lngUser;
+    localStorage.lat = Math.random() * (5.38591 - 5.38400) + 5.38400
+    localStorage.lng = Math.random() * (50.92825 - 50.92687) + 50.92687
+
+    while (kaart.distance([lngPrevious, latPrevious], [localStorage.lng, localStorage.lat]) < 80) {
+        console.log(kaart.distance([lngPrevious, latPrevious], [localStorage.lng, localStorage.lat]));
+        localStorage.lat = Math.random() * (5.38591 - 5.38400) + 5.38400
+        localStorage.lng = Math.random() * (50.92825 - 50.92687) + 50.92687
+    }
+    location.reload();
 }
