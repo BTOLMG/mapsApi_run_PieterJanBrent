@@ -4,11 +4,23 @@
 
 #refreshLocation{
     background-color: transparent;
-    border:1px dotted #eeeeee;
+    border:5px dotted #afafaf;
     color: transparent;
     width: 500px;
     height: 500px;
     border-radius: 50%;
     margin-left: calc(100vw * var(--location));
     margin-top: calc(100vh * var(--location));
+    padding: calc(100vh * var(--location));
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.example::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.example {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
 }
